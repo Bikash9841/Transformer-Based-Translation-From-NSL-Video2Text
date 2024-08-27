@@ -1,0 +1,82 @@
+{
+  "version": "1.0",
+  "truncation": null,
+  "padding": null,
+  "added_tokens": [
+    {
+      "id": 0,
+      "content": "[UNK]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 1,
+      "content": "[PAD]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 2,
+      "content": "[SOS]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    },
+    {
+      "id": 3,
+      "content": "[EOS]",
+      "single_word": false,
+      "lstrip": false,
+      "rstrip": false,
+      "normalized": false,
+      "special": true
+    }
+  ],
+  "normalizer": null,
+  "pre_tokenizer": {
+    "type": "Whitespace"
+  },
+  "post_processor": null,
+  "decoder": null,
+  "model": {
+    "type": "WordLevel",
+    "vocab": {
+      "[UNK]": 0,
+      "[PAD]": 1,
+      "[SOS]": 2,
+      "[EOS]": 3,
+      "।": 4,
+      "म": 5,
+      "काम": 6,
+      "छैन": 7,
+      "मेरो": 8,
+      "अण्डा": 9,
+      "धेरै": 10,
+      "भक्तपुर": 11,
+      "मा": 12,
+      "लाई": 13,
+      "साथी": 14,
+      "छ": 15,
+      "तिम्रो": 16,
+      "मनपर्छ": 17,
+      "संग": 18,
+      "हरु": 19,
+      "तिमी": 20,
+      "पैसा": 21,
+      "खान्छु": 22,
+      "गर्छु": 23,
+      "घर": 24,
+      "छन्": 25,
+      "हो": 26
+    },
+    "unk_token": "[UNK]"
+  }
+}
