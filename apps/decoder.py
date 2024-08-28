@@ -2,9 +2,11 @@ import math
 import torch
 
 
+# A complete decoder architecture from `Attention is All You Need` paper.
+
 class InputEmbeddings(torch.nn.Module):
 
-    def __init__(self, d_model: int = 768, vocab_size: int = 20) -> None:
+    def __init__(self, d_model: int = 768, vocab_size: int = 27) -> None:
         super().__init__()
         self.d_model = d_model
         self.vocab_size = vocab_size
@@ -18,7 +20,7 @@ class InputEmbeddings(torch.nn.Module):
 
 class PositionalEncoding(torch.nn.Module):
 
-    def __init__(self, d_model: int = 768, seq_len: int = 3136, dropout: float = 0.1) -> None:
+    def __init__(self, d_model: int = 768, seq_len: int = 15, dropout: float = 0.1) -> None:
         super().__init__()
         self.d_model = d_model
         self.seq_len = seq_len
