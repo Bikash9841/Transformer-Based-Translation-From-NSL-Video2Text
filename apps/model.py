@@ -19,18 +19,9 @@ from torchvision.transforms import (
 
 def get_config():
     return {
-        "batch_size": 1,
-        "num_epochs": 2,
-        "lr": 10**-4,
-        "seq_len": 1470,
+        "seq_len": 15,
         "d_model": 768,
         "lang_tgt": "ne",
-        "model_folder": "weights",
-        "model_basename": "tmodel_",
-        "preload": "latest",
-        "tokenizer_file": "tokenizer_{0}.json",
-        "experiment_name": "/content/drive/MyDrive/English2Nepali/runs"
-        # "experiment_name": "/content/drive/MyDrive/translation/runs"
     }
 
 
@@ -47,11 +38,13 @@ v2t_model = get_model(config=config, enc_model=vivit_model,
 
 
 # loading the saved model
-model_path = '39_mtrain.pt'
-lm = torch.load(model_path, map_location=torch.device('cpu'))
+model_path = '44_mtrain.pt'
+lm = torch.load(model_path, map_location='cpu')
 
 # load the trained parameter into the model
 v2t_model.load_state_dict(lm['model_state_dict'])
+
+v2t_model.to(torch.device('cpu'))
 
 
 resize_to = (224, 224)
@@ -64,10 +57,10 @@ val_transform = Compose(
             key="video",
             transform=Compose(
                 [
-                    UniformTemporalSubsample(32),
+                    Resize(resize_to),
+                    UniformTemporalSubsample(60),
                     Lambda(lambda x: x / 255.0),
                     Normalize(mean, std),
-                    Resize(resize_to),
                 ]
             ),
         ),
@@ -133,9 +126,8 @@ def get_video_tensor(video_path):
         transform=val_transform,
     )
 
-    loader = DataLoader(infer_dataset, batch_size=1, num_workers=0)
-    vid = next(iter(loader))
-    print(vid)
+    loader = DataLoader(infer_dataset, batch_size=1)
+    vid = next(iter(loader))['video']
     return vid
 
 
