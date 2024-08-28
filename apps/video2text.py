@@ -1,14 +1,14 @@
-from transformers import VivitImageProcessor, VivitModel, VivitForVideoClassification
+from transformers import VivitImageProcessor, VivitModel
 import torch
 from decoder import Decoder, DecoderBlock, InputEmbeddings, PositionalEncoding, MultiHeadAttentionBlock, ResidualConnection, ProjectionLayer, FeedForwardBlock
 
 model_checkpoint = "google/vivit-b-16x2-kinetics400"
 image_processor = VivitImageProcessor.from_pretrained(model_checkpoint)
 
-# model = VivitForVideoClassification.from_pretrained(model_checkpoint)
 vivit_model = VivitModel.from_pretrained(model_checkpoint)
 
 
+# To remove the pooler layer from the model, outputs what it gets from the previous layer
 class Identity(torch.nn.Module):
     def __init__(self):
         super().__init__()
@@ -34,6 +34,7 @@ vivit_model = VivitModel(vivit_model.config)
 vivit_model.pooler = Identity()
 
 
+# Complete Video to Text model architecture
 class Video2Text(torch.nn.Module):
 
     def __init__(self, encoder, decoder: Decoder, tgt_embed: InputEmbeddings, tgt_pos: PositionalEncoding, projection_layer: ProjectionLayer) -> None:
