@@ -10,6 +10,7 @@ mp_pose = mp.solutions.pose
 mp_hands = mp.solutions.hands
 
 
+# converts orginal video to stick figure representation
 def conv_to_stick_fig(video_path, upload_dir):
     # For webcam input:
     cap = cv2.VideoCapture(video_path)
