@@ -6,6 +6,10 @@ from stick_figure import conv_to_stick_fig
 import torch
 
 
+'''
+A streamlit application to infer the model.
+'''
+
 result = None
 
 # Initialize session state variables if they don't exist
