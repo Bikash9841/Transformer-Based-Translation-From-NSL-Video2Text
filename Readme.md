@@ -16,5 +16,13 @@ The project focuses on developing a system to interpret Nepali Sign Language ges
 
 ## Model Used:
 
-Encoder: [ViViT] (https://arxiv.org/pdf/2103.15691)
-Decoder: [Custom_Decoder] (https://i.sstatic.net/nQ2f5.png)
+1. Encoder: [ViViT] (https://arxiv.org/pdf/2103.15691)
+2. Decoder: [Custom_Decoder] (https://i.sstatic.net/nQ2f5.png)
+
+## Dataset Used:
+
+1. Custom made dataset of Nepali Sign Language Video.
+2. Recorded video for 20 different sentences.
+3. Each sentence have 15 different samples.
+4. Convert each video to stick figure representation and add horizontal flip augmentation.
+5. Associate nepali translation label to each video sample.
